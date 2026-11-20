@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Accessible Campus Navigator</title>
+  <meta name="description" content="A mobile app that helps wheelchair users and visually impaired students find accessible routes around campus.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Accessible Campus Navigator home">♿ Accessible Campus Navigator</a>
+      <nav aria-label="Main">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#features">Features</a>
+        <a href="#demo">Try the Demo</a>
+      </nav>
+      <div class="tools">
+        <button id="contrastBtn" type="button" aria-pressed="false">High contrast</button>
+        <button id="fontBtn" type="button" aria-label="Increase text size">A+</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="wrap">
+        <h1>Find the safe, accessible path around campus.</h1>
+        <p class="lead">Accessible Campus Navigator is a mobile application that helps wheelchair users and visually impaired students find classrooms, libraries and other buildings using accessible routes.</p>
+        <p><strong>Our aim:</strong> make travelling around campus easy and safe for everyone.</p>
+        <a class="btn" href="#demo">Try the route demo</a>
+      </div>
+    </section>
+
+    <section id="problem" class="wrap section">
+      <h2>What is the problem?</h2>
+      <p>Students don't know which path is safe and accessible for them. These are the barriers they face on campus:</p>
+      <div class="grid">
+        <article class="card"><div class="icon" aria-hidden="true">🪜</div><h3>Stairs</h3><p>Wheelchair users cannot easily use stairs.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true">🛗</div><h3>Unknown ramps &amp; lifts</h3><p>Students don't know where ramps and lifts are available.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true">🔎</div><h3>Finding classrooms</h3><p>Visually impaired students may find it difficult to find classrooms.</p></article>
+        <article class="card"><div class="icon" aria-hidden="true">⚠️</div><h3>Broken lifts</h3><p>Sometimes lifts stop working, and students don't know about it.</p></article>
+      </div>
+    </section>
+
+    <section id="solution" class="band">
+      <div class="wrap section">
+        <h2>What is our solution?</h2>
+        <p>We are developing a mobile application that shows students the correct path to reach their destination. The app provides:</p>
+        <ul class="checks">
+          <li><strong>Fastest route</strong> – the route that takes less time.</li>
+          <li><strong>Step-free route</strong> – a route without stairs.</li>
+          <li><strong>Voice directions</strong> – the app tells students where to go.</li>
+          <li><strong>Landmark directions</strong> – instructions using places like reception, lifts and entrances.</li>
+          <li><strong>Report broken lift</strong> – students can report if a lift is not working.</li>
+          <li><strong>Route updates</strong> – the app suggests another route if a lift is broken.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="features" class="wrap section">
+      <h2>Main features</h2>
+      <div class="grid five">
+        <article class="card"><span class="num">1</span><h3>Two route options</h3><p>Choose the fastest route or a step-free route.</p></article>
+        <article class="card"><span class="num">2</span><h3>Voice navigation</h3><p>The app speaks directions so visually impaired students can follow them.</p></article>
+        <article class="card"><span class="num">3</span><h3>Landmark directions</h3><p>Directions use familiar places like the main gate, reception and lift.</p></article>
+        <article class="card"><span class="num">4</span><h3>Report broken lift</h3><p>Students can inform others when a lift is not working.</p></article>
+        <article class="card"><span class="num">5</span><h3>Route update</h3><p>If a lift is broken, the app finds another accessible route after the issue is verified.</p></article>
+      </div>
+    </section>
+
+    <section id="demo" class="band">
+      <div class="wrap section">
+        <h2>Try the demo</h2>
+        <p>This is a small sample campus. Pick a start and destination, choose a route type, and listen to the directions. Then report the lift as broken and see the route change.</p>
+
+        <div class="demo">
+          <form id="routeForm" class="controls" aria-label="Route finder">
+            <label>From
+              <select id="from"></select>
+            </label>
+            <label>To
+              <select id="to"></select>
+            </label>
+            <fieldset>
+              <legend>Route type</legend>
+              <label class="inline"><input type="radio" name="mode" value="fast"> Fastest</label>
+              <label class="inline"><input type="radio" name="mode" value="stepfree" checked> Step-free</label>
+            </fieldset>
+            <div class="row">
+              <button class="btn" type="submit">Find route</button>
+              <button class="btn alt" type="button" id="speakBtn">🔊 Read aloud</button>
+              <button class="btn alt" type="button" id="stopBtn">Stop</button>
+            </div>
+          </form>
+
+          <div class="result" aria-live="polite" id="result">
+            <p class="muted">Choose a route and press “Find route”.</p>
+          </div>
+        </div>
+
+        <div class="lift" id="liftPanel">
+          <h3>Lift status – Block A Lift</h3>
+          <p id="liftStatus" aria-live="polite"></p>
+          <div class="row">
+            <button class="btn warn" type="button" id="reportBtn">Report lift as broken</button>
+            <button class="btn alt" type="button" id="verifyBtn">Verify report (staff)</button>
+            <button class="btn alt" type="button" id="fixBtn">Mark lift working</button>
+          </div>
+          <p class="muted small">Reports stay “pending” and do not change routes until verified, so a mistaken report cannot block anyone.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap section">
+      <h2>Our aim</h2>
+      <p>Everyone should be able to move around campus with confidence. Accessible Campus Navigator gives every student a route they can trust.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap"><p>© 2026 Accessible Campus Navigator – Project by our team.</p></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
